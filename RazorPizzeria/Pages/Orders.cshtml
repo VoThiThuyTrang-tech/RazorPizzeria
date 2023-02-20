@@ -1,0 +1,49 @@
+﻿@page
+@model RazorPizzeria.Pages.OrdersModel
+@{
+}
+<h3 class="text-primary">Orders</h3>
+
+<hr />
+<table class="table" style="width:100%">
+	<thead>
+		<tr>
+			<th>
+				Id
+			</th>
+			<th>
+				Pizza Name
+			</th>
+			<th>
+				Price
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach(var order in Model.PizzaOrders){
+			<tr>
+				<td>
+					@order.Id
+				</td>
+
+				<td>
+					@order.PizzaName
+				</td>
+
+				<td>
+					@order.BasePrice
+				</td>
+				<td>
+					<a asp-controller="Orders" asp-action="Edit" asp-route-id="@order.Id" class="btn btn-primary">Edit</a>
+					<a asp-controller="Orders" asp-action="Delete" asp-route-id="@order.Id" class="btn btn-danger">Delete</a>
+					
+				</td>
+				
+			</tr>
+		}
+
+
+	</tbody>
+</table>
